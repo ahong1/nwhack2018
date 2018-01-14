@@ -73,10 +73,10 @@ class App extends Component {
     // TODO:
     // - every xxx seconds, poll the server for any updates,
     // - if an alert is retrieved, call loadBanner() to load the appropriate screen
-    fetch("https://piggyboy.lib.id/trendy-tech-service@dkev/", fetchArgs)
-      .then(res => res.json())
-      .then(res => console.log('result is', res))
-      .catch(err => console.warn(err));
+    // fetch("https://piggyboy.lib.id/trendy-tech-service@dkev/", fetchArgs)
+    //   .then(res => res.json())
+    //   .then(res => console.log('result is', res))
+    //   .catch(err => console.warn(err));
 
     // begin the process of switching idle states
     const idleFn = setInterval(this.switchIdleStates, this.state.IDLE_SWITCH_DURATION);

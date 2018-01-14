@@ -8,6 +8,7 @@
     "import": "^0.0.6",
     "lib": "^3.0.1",
     "myo": "^3.0.0",
+    "myp": "^1.0.0",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.0",
     "react-camera": "^0.1.3",
