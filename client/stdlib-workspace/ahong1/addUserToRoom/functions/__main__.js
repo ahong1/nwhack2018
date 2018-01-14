@@ -15,28 +15,48 @@ module.exports = (name = 'world', context, callback) => {
         region: "us-west-2"
     });
   var DB = new AWS.DynamoDB();
-  DB.scan({
+
+
+  DB.getItem({
       TableName: "nwHackDemo",
+      Key: {
+          data: {
+              S: "Data"
+          }
+      }
   }, function(err, data) {
 
-      console.log(data)
+      console.log(data.Item.numPeople.N)
+
+      var params = {
+          ExpressionAttributeNames: {
+              "#NP": "numPeople"
+          },
+          ExpressionAttributeValues: {
+              ":t": {
+                  N: String(parseInt(data.Item.numPeople.N) + 1)
+              }
+          },
 
 
-      var oldItem = data.Items;
-      oldItem[0].Results.M.NumParticipants.N = (parseInt(oldItem[0].Results.M.NumParticipants.N) + 1).toString()
-      console.log(oldItem[0].Results.M.NumParticipants.N);
+          ReturnValues: "ALL_NEW",
+          TableName: "nwHackDemo",
+          UpdateExpression: "SET #NP = :t ",
+          Key: {
+              data: {
+                  S: "Data"
+              }
+          }
+      }
 
-      DB.putItem({
-          Item: oldItem[0],
-          ReturnConsumedCapacity: "TOTAL",
-          TableName: "nwHackDemo"}, function (err, data) {
+
+      DB.updateItem(params, function(err,data){
           if (err) console.log(err, err.stack); // an error occurred
-          else     console.log(data);           // successful response
+          else     console.log(data);
+
+          callback(null, data);
       })
 
-      callback(null, 1)
-
   })
-
 
 };
