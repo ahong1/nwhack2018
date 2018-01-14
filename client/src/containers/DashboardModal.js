@@ -17,14 +17,19 @@ class DashboardModal extends Component {
         super();
 
         this.state = {
-           showModal: false
+            showModal: false
         };
+
+        this.handleFist.bind( this );
 
 
     }
 
+
     componentDidMount() {
         let header = new Headers({'Content-Type': 'application/json'});
+
+        let dbModal = this;
 
         let fetchArgs = {
             method: 'POST',
@@ -38,18 +43,19 @@ class DashboardModal extends Component {
             .then(res => console.log('result is', res))
             .catch(err => console.warn(err));
 
-
-
         Myo.on('fist', function(){
             console.log('Hello Myo!');
             Myo.myos[0].vibrate('short');
             Myo.myos[0].vibrate('short');
+            dbModal.setState({ showModal: true,
+                resetModal: setTimeout(1000, dbModal.handleClose )
 
-            this.setState({
-                showModal: !this.state.showModal
-            })
-        });
+            });
+
+        } );
     }
+
+
 
     handleClose() {
         this.setState ({
@@ -57,12 +63,16 @@ class DashboardModal extends Component {
         })
     }
 
+    handleFist() {
+        this.setState({
+            showModal: !this.state.showModal
+        })
+    }
+
     render() {
         return (
             <Modal show={this.state.showModal} onHide={this.handleClose}>
-                <div className="">
-                    This Works!
-                </div>
+                'We made it'
             </Modal>
         );
     }
