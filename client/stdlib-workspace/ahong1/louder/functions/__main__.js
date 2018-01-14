@@ -54,7 +54,9 @@ DB.getItem({
 				if (err) console.log(err, err.stack); // an error occurred
 				// else     console.log(data);
 
-				if (louds >= threshold) {
+				console.log('loud =', louds );
+
+				if (louds >= 2) {
 
 					var params = {
 						ExpressionAttributeNames: {

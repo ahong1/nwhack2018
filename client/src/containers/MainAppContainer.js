@@ -122,18 +122,27 @@ class App extends Component {
     // console.log(Object.keys(res));
     console.log(res.isLouder);
     // console.log(res.isfaster);
-    if (res.isfaster) {
+    if (res.isFaster) {
       this.loadBanner(KEYS.SPEED_UP);
+        this.resetAll();
+
     } else if (res.isSlower) {
       this.loadBanner(KEYS.SLOW_DOWN);
+        this.resetAll();
+
     } else if (res.isLouder) {
       this.loadBanner(KEYS.LOUDER);
+        this.resetAll();
+
     } else if (res.isQuieter) {
       this.loadBanner(KEYS.QUIETER);
+        this.resetAll();
+
     } else if (res.isSmile) {
       this.loadBanner(KEYS.SMILE);
+        this.resetAll();
+
     }
-      this.resetAll();
 
   };
 
