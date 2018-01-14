@@ -154,7 +154,7 @@ module.exports = (name = 'world', context, callback) => {
 							// else     console.log(data);
 						var params = {
 							ExpressionAttributeNames: {
-								"#NP": "faster"
+								"#NP": "Faster"
 							},
 							ExpressionAttributeValues: {
 								":t": {

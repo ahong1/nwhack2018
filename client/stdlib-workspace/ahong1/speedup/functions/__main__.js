@@ -28,7 +28,8 @@ module.exports = (name = 'world', context, callback) => {
 
 		console.log(data.Item.numPeople.N)
 		threshold = parseInt(data.Item.numPeople.N) / 5;
-		fasts = parseInt(data.Item.faster.N) + 1;
+		fasts = parseInt(data.Item.Faster.N) + 1;
+		console.log(fasts)
 
 		var params = {
 				ExpressionAttributeNames: {
@@ -36,7 +37,7 @@ module.exports = (name = 'world', context, callback) => {
 				},
 				ExpressionAttributeValues: {
 						":t": {
-								N: String(fasts)
+								N: fasts.toString()
 						}
 				},
 
