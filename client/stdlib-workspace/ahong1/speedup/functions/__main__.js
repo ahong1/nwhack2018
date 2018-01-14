@@ -1,5 +1,6 @@
 /**
 * A basic Hello World function
+ * @acl *
 * @param {string} name Who you're saying hello to
 * @returns {any}
 */
@@ -27,15 +28,16 @@ module.exports = (name = 'world', context, callback) => {
 
 		console.log(data.Item.numPeople.N)
 		threshold = parseInt(data.Item.numPeople.N) / 5;
-		fasts = parseInt(data.Item.faster.N) + 1;
+		fasts = parseInt(data.Item.Faster.N) + 1;
+		console.log(fasts)
 
 		var params = {
 				ExpressionAttributeNames: {
-						"#NP": "faster"
+						"#NP": "Faster"
 				},
 				ExpressionAttributeValues: {
 						":t": {
-								N: String(fasts)
+								N: fasts.toString()
 						}
 				},
 
@@ -55,7 +57,7 @@ module.exports = (name = 'world', context, callback) => {
 				if (err) console.log(err, err.stack); // an error occurred
 				// else     console.log(data);
 
-				if (fasts >= threshold) {
+				if (fasts >= 2) {
 
 					var params = {
 						ExpressionAttributeNames: {

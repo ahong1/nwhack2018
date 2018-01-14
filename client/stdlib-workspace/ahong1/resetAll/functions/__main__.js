@@ -1,5 +1,6 @@
 /**
 * A basic Hello World function
+ * @acl *
 * @param {string} name Who you're saying hello to
 * @returns {any}
 */
@@ -153,7 +154,7 @@ module.exports = (name = 'world', context, callback) => {
 							// else     console.log(data);
 						var params = {
 							ExpressionAttributeNames: {
-								"#NP": "faster"
+								"#NP": "Faster"
 							},
 							ExpressionAttributeValues: {
 								":t": {

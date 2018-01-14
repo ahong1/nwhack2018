@@ -1,5 +1,6 @@
 /**
 * A basic Hello World function
+ * @acl *
 * @param {string} name Who you're saying hello to
 * @returns {object}
 */
@@ -26,10 +27,10 @@ module.exports = (name = 'world', context, callback) => {
 
         var results = {
 
-          isfaster: data.Item.isfaster.BOOL,
+          isFaster: data.Item.isFaster.BOOL,
             isLouder: data.Item.isLouder.BOOL,
             isSlower: data.Item.isSlower.BOOL,
-            isQuieter: data.Item.isSlower.BOOL,
+            isQuieter: data.Item.isQuieter.BOOL,
             isSmile: data.Item.isSmile.BOOL
 
 

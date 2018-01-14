@@ -111,7 +111,7 @@ class App extends Component {
       cache: 'default'
     };
 
-    fetch("https://ahong1.lib.id/resetBooleans@dev/", fetchArgs)
+    fetch("https://ahong1.lib.id/resetAll@dev/", fetchArgs)
       .then(res => res.json())
       .then(res => console.log(res))
       .catch(err => console.warn(err));
@@ -122,19 +122,25 @@ class App extends Component {
     // console.log(Object.keys(res));
     console.log(res.isLouder);
     // console.log(res.isfaster);
-    if (res.isfaster) {
+    if (res.isFaster) {
       this.loadBanner(KEYS.SPEED_UP);
+
     } else if (res.isSlower) {
       this.loadBanner(KEYS.SLOW_DOWN);
+
     } else if (res.isLouder) {
       this.loadBanner(KEYS.LOUDER);
+
     } else if (res.isQuieter) {
       this.loadBanner(KEYS.QUIETER);
+
     } else if (res.isSmile) {
       this.loadBanner(KEYS.SMILE);
-    }
 
-    this.resetAll();
+    }
+      this.resetAll();
+
+
   };
 
   componentWillUnmount() {

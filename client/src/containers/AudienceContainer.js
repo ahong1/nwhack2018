@@ -49,7 +49,7 @@ class AudienceContainer extends Component {
             cache: 'default'
         };
 
-        fetch("https://ahong1.lib.id/increaseLoud@dev/", fetchArgs)
+        fetch("https://ahong1.lib.id/louder@dev/", fetchArgs)
           .then(res => res.json())
           .then(res => console.log('result is', res))
           .catch(err => console.warn(err));

@@ -1,5 +1,6 @@
 /**
 * A basic Hello World function
+ * @acl *
 * @param {string} name Who you're saying hello to
 * @returns {any}
 */
@@ -26,6 +27,7 @@ DB.getItem({
 		console.log(data.Item.numPeople.N)
 		threshold = parseInt(data.Item.numPeople.N) / 5;
 		quiets = parseInt(data.Item.quieter.N) + 1;
+		console.log(quiets)
 
 		var params = {
 				ExpressionAttributeNames: {
