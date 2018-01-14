@@ -8,8 +8,8 @@ import AWS from "aws-sdk";
 import VideoStreamContainer from "./VideoStreamContainer";
 
 AWS.config.update({
-    accessKeyId: 'AKIAI2TGJT2BZA4MD3YA',
-    secretAccessKey: '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',
+    accessKeyId: 'AKIAIIZPL74DK4BXD45Q',
+    secretAccessKey: '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',
     region: "us-west-2"
 });
 
@@ -45,7 +45,7 @@ class App extends Component {
           />
           <Route
             exact path="/stream"
-            render={(routeProps) => (<VideoStreamContainer {...routeProps} kinesis={this.state.kinesis} Rekognition={new AWS.Rekognition()} S3={new AWS.S3()} />)}/>
+            render={(routeProps) => (<VideoStreamContainer {...routeProps} kinesis={this.state.kinesis} Rekognition={new AWS.Rekognition()} S3={new AWS.S3()} DB={new AWS.DynamoDB()} />)}/>
         </div>
       </HashRouter>
     )

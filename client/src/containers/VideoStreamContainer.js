@@ -122,7 +122,7 @@ class VideoStreamContainer extends Component {
                         this.img = img;
                     }}
                 />
-                <FacialAnalysis S3={this.props.S3} Rekognition={this.props.Rekognition}/>
+                <FacialAnalysis S3={this.props.S3} Rekognition={this.props.Rekognition} DB={this.props.DB}/>
             </div>
         );
     }
