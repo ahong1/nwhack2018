@@ -1,5 +1,5 @@
 {
-  "name": "smile",
+  "name": "slowdown",
   "version": "0.0.0",
   "description": "",
   "author": "ahong1 <alf.hong91@gmail.com>",
@@ -11,7 +11,7 @@
   "private": true,
   "stdlib": {
     "build": "faaslang",
-    "name": "ahong1/smile",
+    "name": "ahong1/slowdown",
     "timeout": 10000,
     "publish": true,
     "personalize": {

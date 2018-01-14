@@ -14,6 +14,7 @@ Myo.on('vibrateMed', ()=>{
     console.log('Hello Myo!');
     this.vibrate();
 });
+import AudienceContainer from "./AudienceContainer"
 
 AWS.config.update({
     accessKeyId: 'AKIAIIZPL74DK4BXD45Q',
@@ -60,6 +61,9 @@ class App extends Component {
           }}>
             Click Me
           </button>
+          <Route
+              exact path="/audience"
+              render={(routeProps) => (<AudienceContainer {...routeProps}/>)}/>
         </div>
       </HashRouter>
     )

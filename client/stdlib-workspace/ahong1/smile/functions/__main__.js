@@ -1,7 +1,7 @@
 /**
 * A basic Hello World function
 * @param {string} name Who you're saying hello to
-* @returns {string}
+* @returns {any}
 */
 module.exports = (name = 'world', context, callback) => {
 
@@ -11,7 +11,9 @@ module.exports = (name = 'world', context, callback) => {
         secretAccessKey: 'SJtqRrFO+x65N1RdzUmheceMei15KviOX577+lzE',
         region: "us-west-2"
     });
-  var DB = new AWS.DynamoDB();
+	var DB = new AWS.DynamoDB();
+	var threshold;
+	var smiles;
 
 
   DB.getItem({
@@ -24,6 +26,8 @@ module.exports = (name = 'world', context, callback) => {
   }, function(err, data) {
 
       console.log(data.Item.numPeople.N)
+			threshold = parseInt(data.Item.numPeople.N) / 5;
+			smiles = parseInt(data.Item.smile.N) + 1;
 
       var params = {
           ExpressionAttributeNames: {
@@ -31,7 +35,7 @@ module.exports = (name = 'world', context, callback) => {
           },
           ExpressionAttributeValues: {
               ":t": {
-                  N: String(parseInt(data.Item.smile.N) + 1)
+                  N: String(smiles)
               }
           },
 
@@ -46,12 +50,39 @@ module.exports = (name = 'world', context, callback) => {
           }
       }
 
-
+			
       DB.updateItem(params, function(err,data){
           if (err) console.log(err, err.stack); // an error occurred
-          else     console.log(data);
+					// else     console.log(data);
+					
+					if (smiles >= threshold) {
+						var params = {
+							ExpressionAttributeNames: {
+									"#NP": "isSmile"
+							},
+							ExpressionAttributeValues: {
+									":t": {
+											BOOL: true
+									}
+							},
+		
+							ReturnValues: "ALL_NEW",
+							TableName: "nwHackDemo",
+							UpdateExpression: "SET #NP = :t ",
+							Key: {
+									data: {
+											S: "Data"
+									}
+							}
+					}
+						DB.updateItem(params, function(err,data){
+							if (err) console.log(err, err.stack); // an error occurred
+							// else     console.log(data);
+							callback(null, data);
+						});
+					}
 
-          callback(null, data);
+          else callback(null, data);
       })
 
   })

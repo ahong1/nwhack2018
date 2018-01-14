@@ -16,6 +16,7 @@ class LoginContainer extends Component {
       <div className='login-container'>
         <Link to='app'>Go to App</Link>
         <Link to='stream'>Go to Stream</Link>
+          <Link to='audience'> Go to Audience</Link>
         <p>Enter timer here</p>
         <input target='text' onChange={this.handleChange} />
       </div>

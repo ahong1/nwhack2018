@@ -4,19 +4,18 @@
 * @returns {any}
 */
 module.exports = (name = 'world', context, callback) => {
-
 	var AWS = require("aws-sdk");
-    AWS.config.update({
-        accessKeyId: 'AKIAIIZPL74DK4BXD45Q',
-        secretAccessKey: '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',
-        region: "us-west-2"
-		});
-		
-	var DB = new AWS.DynamoDB();
-	var threshold;
-	var fasts;
+	AWS.config.update({
+			accessKeyId: 'AKIAIIZPL74DK4BXD45Q',
+			secretAccessKey: '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',
+			region: "us-west-2"
+	});
+var DB = new AWS.DynamoDB();
+var threshold;
+var slows;
 
-	DB.getItem({
+
+DB.getItem({
 		TableName: "nwHackDemo",
 		Key: {
 				data: {
@@ -27,15 +26,15 @@ module.exports = (name = 'world', context, callback) => {
 
 		console.log(data.Item.numPeople.N)
 		threshold = parseInt(data.Item.numPeople.N) / 5;
-		fasts = parseInt(data.Item.faster.N) + 1;
+		slows = parseInt(data.Item.slower.N) + 1;
 
 		var params = {
 				ExpressionAttributeNames: {
-						"#NP": "faster"
+						"#NP": "slower"
 				},
 				ExpressionAttributeValues: {
 						":t": {
-								N: String(fasts)
+								N: String(slows)
 						}
 				},
 
@@ -52,14 +51,15 @@ module.exports = (name = 'world', context, callback) => {
 
 
 		DB.updateItem(params, function(err,data){
+			console.log("i'm over here1");
 				if (err) console.log(err, err.stack); // an error occurred
 				// else     console.log(data);
 
-				if (fasts >= threshold) {
-
+				if (slows >= threshold) {
+					console.log("it's here ma dudes");
 					var params = {
 						ExpressionAttributeNames: {
-								"#NP": "isFaster"
+								"#NP": "isSlower"
 						},
 						ExpressionAttributeValues: {
 								":t": {
@@ -77,6 +77,7 @@ module.exports = (name = 'world', context, callback) => {
 						}
 				}
 					DB.updateItem(params, function(err,data){
+						console.log("i'm over here");
 						if (err) console.log(err, err.stack); // an error occurred
 						// else     console.log(data);
 
@@ -88,5 +89,5 @@ module.exports = (name = 'world', context, callback) => {
 		})
 
 })
-	
+
 };

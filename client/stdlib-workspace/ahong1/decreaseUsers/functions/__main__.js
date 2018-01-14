@@ -34,7 +34,7 @@ module.exports = (name = 'world', context, callback) => {
           },
           ExpressionAttributeValues: {
               ":t": {
-                  N: String(parseInt(data.Item.numPeople.N) + 1)
+                  N: String(parseInt(data.Item.numPeople.N) - 1)
               }
           },
 
@@ -52,7 +52,7 @@ module.exports = (name = 'world', context, callback) => {
 
       DB.updateItem(params, function(err,data){
           if (err) console.log(err, err.stack); // an error occurred
-          else     console.log(data);
+          // else     console.log(data);
 
           callback(null, data);
       })
