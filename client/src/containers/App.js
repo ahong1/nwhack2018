@@ -18,7 +18,7 @@ class App extends Component {
   constructor(props) {
     super();
     this.state = {
-      Kinesis: new AWS.Kinesis()
+      kinesis: new AWS.Kinesis()
     }
   }
 
@@ -29,7 +29,9 @@ class App extends Component {
         <div className="App">
           <Route exact path="/" component={LoginContainer}/>
           <Route exact path="/app" component={MainAppContainer}/>
-          <Route exact path="/stream" component{<VideoStreamContainer kinesis={this.state.Kinesis}/>} />
+          <Route
+            exact path="/stream"
+            render={(routeProps) => (<VideoStreamContainer {...routeProps} kinesis={this.state.kinesis} />)}/>
         </div>
       </HashRouter>
     )

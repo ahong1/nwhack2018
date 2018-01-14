@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import RecordRTC from "recordrtc";
+import BackButton from '../components/BackButton';
 
 const hasGetUserMedia = !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
     navigator.mozGetUserMedia || navigator.msGetUserMedia);
@@ -79,7 +80,7 @@ class VideoStreamContainer extends Component {
     render() {
         return (
             <div className="VideoStreamWrapper">
-
+                <BackButton />
                 <video autoPlay muted src={this.state.src} />
 
             </div>
