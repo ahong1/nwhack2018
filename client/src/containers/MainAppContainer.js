@@ -3,6 +3,15 @@ import Banner from '../components/Banner';
 import BackButton from '../components/BackButton';
 import Timer from '../banners/Timer';
 import './App.css';
+import Metronome from '../banners/Metronome';
+import SpeedUp from '../banners/SpeedUp';
+import SlowDown from "../banners/SlowDown";
+import MoveMore from "../banners/MoveMore";
+import MoveLess from "../banners/MoveLess";
+import EyesLeft from "../banners/EyesLeft";
+import EyesRight from "../banners/EyesRight";
+import Louder from "../banners/Louder";
+import Quieter from "../banners/Quieter";
 
 const BlankBanner = ({styles}) => (
   <Banner idle styles={{backgroundColor: 'black', ...styles}} />
@@ -90,17 +99,17 @@ class App extends Component {
     // the key represents the message from the server that we expect to receive
     const bannerToLoad = {
       BLANK:                  <BlankBanner />,
-      METRONOME:              <Timer />,
-      SPEED_UP:               <Timer />,
-      SLOW_DOWN:              <Timer />,
-      LOUDER:                 <Timer />,
-      QUIETER:                <Timer />,
+      METRONOME:              <Metronome />,
+      SPEED_UP:               <SpeedUp />,
+      SLOW_DOWN:              <SlowDown />,
+      LOUDER:                 <Louder />,
+      QUIETER:                <Quieter />,
       SMILE:                  <Timer />,
-      EYES_LEFT:              <Timer />,
-      EYES_RIGHT:             <Timer />,
+      EYES_LEFT:              <EyesLeft />,
+      EYES_RIGHT:             <EyesRight />,
       EYES_LEFT_AND_RIGHT:    <Timer />,
-      MOVE_MORE:              <Timer />,
-      MOVE_LESS:              <Timer />,
+      MOVE_MORE:              <MoveMore />,
+      MOVE_LESS:              <MoveLess />,
       GESTURE:                <Timer />,
       STAY_STILL:             <Timer />,
     }[key];

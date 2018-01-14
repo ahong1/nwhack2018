@@ -1,0 +1,28 @@
+.eyes-left-header {
+    font-size: 8em;
+    color: white;
+    margin: 0;
+    display: flex;
+    padding-top: 30vh;
+}
+
+.eyes-right-header {
+    font-size: 8em;
+    color: white;
+    margin: 0;
+    display: inline-block;
+    padding-top: 30vh;
+    padding-left: 30vh;
+}
+
+.left-arrow {
+    width: 30%;
+    float: left;
+    padding-top:23vh;
+}
+
+.right-arrow {
+    width: 30%;
+    float: right;
+    padding-top:23vh;
+}

@@ -10,7 +10,7 @@ class Metronome extends Component {
 
     this.state = {
         location: "left",
-        speed: 2
+        speed: 2000
       }
   }
 
@@ -22,7 +22,7 @@ class Metronome extends Component {
     };
 
   componentDidMount() {
-      setInterval(this.changeBallPosition, 2000);
+      setInterval(this.changeBallPosition, this.state.speed);
   }
 
   render() {
