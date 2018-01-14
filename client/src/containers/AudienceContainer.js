@@ -16,8 +16,6 @@ class AudienceContainer extends Component {
 
     }
 
-
-
     componentDidMount() {
         let header = new Headers({'Content-Type': 'application/json'});
 
@@ -192,8 +190,8 @@ class AudienceContainer extends Component {
                     <Button className="button" onClick={this.increaseSlow}>Slower</Button>
                 </div>
                 <div className="row">
-                    <Button onClick={this.lookLeft}>Look Left</Button>
-                    <Button onClick={this.lookRight}>Look Right</Button>
+                    <Button className="button" onClick={this.lookLeft}>Look Left</Button>
+                    <Button className="button" onClick={this.lookRight}>Look Right</Button>
                 </div>
                 <Button className="button" onClick={this.increaseSmile}>Smile</Button>
 
