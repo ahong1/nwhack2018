@@ -28,6 +28,141 @@
   height: 100%;
   width: 100%;
 
-  background-color: #86c663;
+  background-color: black;
+}
+
+.login-panel {
+  display: flex;
+  justify-content: center;
+  height: min-content;
+  width: 80%;
+  margin-top: 2rem;
+}
+
+.login-panel-left, .login-panel-right {
+  color: white;
+  padding: 0 0.5rem;
+}
+
+.login-panel-left {
+  display: flex;
+  flex-flow: column;
+  border-right: 2px solid white;
+  align-items: center;
+  padding-right: 2rem;
+}
+
+.login-panel-right {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding-left: 2rem;
+}
+
+.number-picker {
+  width: 2rem;
+  height: 20px;
+  margin: 0 0.5rem;
+  background: none;
+  outline: none;
+  border: none;
+  border-bottom: solid 2px white;
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+}
+
+.room-code {
+  width: 4rem;
+  height: 20px;
+  margin: 0 0.5rem;
+  background: none;
+  outline: none;
+  border: none;
+  border-bottom: solid 2px white;
+  text-align: center;
+
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 600;
+}
+
+.presentation-start-button, .room-code-button {
+  font-size: 1rem;
+  color: white;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  height: 2rem;
+  width: 3rem;
+  margin-top: 1rem;
+}
+
+.title-container {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  height: 40%;
+  width: 100%;
+}
+
+.title-span {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 4rem;
+
+  transition: 0.25s;
+}
+
+.title-1-base { position: absolute; left: 0; transform: translate3D(-2.5rem, -3.5rem, 0); }
+.title-1 { animation: title-1-fade 0.5s; animation-iteration-count: 1; animation-timing-function: ease-out; }
+@keyframes title-1-fade {
+  from { opacity: 0; transform: scale(2.5) translate3D(-2.5rem, -3.5rem, 0); }
+  to   { opacity: 1; transform: scale(1) translate3D(-2.5rem, -3.5rem, 0); }
+}
+
+.title-2-base { transform: translate3D(0.5rem, 0, 0); }
+.title-2 { animation: title-2-fade 0.5s; animation-iteration-count: 1; animation-timing-function: ease-out; }
+@keyframes title-2-fade {
+  from { opacity: 0; transform: scale(2.5) translate3D(0.25rem, -0.5rem, 0); }
+  to   { opacity: 1; transform: scale(1) translate3D(0.5rem, 0, 0); }
+}
+
+.title-3-base { transform: translate3D(1rem, 0, 0); }
+.title-3 { animation: title-3-fade 0.5s; animation-iteration-count: 1; animation-timing-function: ease-out; }
+@keyframes title-3-fade {
+  from { opacity: 0; transform: scale(2) translate3D(1rem, -0.5rem, 0); }
+  to   { opacity: 1; transform: scale(1) translate3D(1rem, 0, 0); }
+}
+
+.title-4-base { transform: translate3D(1.5rem, 0, 0); }
+.title-4 { animation: title-4-fade 0.5s; animation-iteration-count: 1; animation-timing-function: ease-out; }
+@keyframes title-4-fade {
+  from { opacity: 0; transform: scale(2) translate3D(1.5rem, -0.5rem, 0); }
+  to   { opacity: 1; transform: scale(1) translate3D(1.5rem, 0, 0); }
+}
+
+.title-5-base { transform: translate3D(1.5rem, 0, 0); }
+.title-5 { animation: title-5-fade 0.5s; animation-iteration-count: 1; animation-timing-function: ease-out; }
+@keyframes title-5-fade {
+  from { opacity: 0; transform: scale(2.5) translate3D(1.5rem, -0.5rem, 0); }
+  to   { opacity: 1; transform: scale(1) translate3D(1.5rem, 0, 0); }
+}
+
+.title-6-base { transform: translate3D(1rem, 0, 0); }
+.title-6 { animation: title-6-fade 0.5s; animation-iteration-count: 1; animation-timing-function: ease-out; }
+@keyframes title-6-fade {
+  from { opacity: 0; transform: scale(2) translate3D(1.5rem, -0.5rem, 0); }
+  to   { opacity: 1; transform: scale(1) translate3D(1rem, 0, 0); }
+}
+
+.title-7-base { transform: translate3D(0.5rem, -1rem, 0); }
+.title-7 { animation: title-7-fade 0.5s; animation-timing-function: ease-out; }
+@keyframes title-7-fade {
+  from { opacity: 0; transform: scale(2.5) translate3D(0.5rem, -1.5rem, 0); }
+  to   { opacity: 1; transform: scale(1) translate3D(0.5rem, -1rem, 0); }
 }
 

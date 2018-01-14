@@ -4,19 +4,18 @@ import {Modal} from 'react-bootstrap'
 import Myo from 'myo';
 
 
-Myo.connect('com.example.ticktocktock');
-
-Myo.on('fist', function(){
-    console.log('Hello Myo!');
-    Myo.myos[0].vibrate('short');
-    Myo.myos[0].vibrate('short');
-});
+// Myo.connect('com.example.ticktocktock');
+//
+// Myo.on('fist', function(){
+//     console.log('Hello Myo!');
+//     Myo.myos[0].vibrate('short');
+//     Myo.myos[0].vibrate('short');
+// });
 
 class DashboardModal extends Component {
     constructor(props) {
         super();
 
-        this.handleHide = this.handleHide.bind(this);
         this.state = {
            showModal: false
         };
@@ -38,6 +37,18 @@ class DashboardModal extends Component {
         fetch("https://ahong1.lib.id/checkStats@dev/", fetchArgs).then(res => res.json())
             .then(res => console.log('result is', res))
             .catch(err => console.warn(err));
+
+
+
+        Myo.on('fist', function(){
+            console.log('Hello Myo!');
+            Myo.myos[0].vibrate('short');
+            Myo.myos[0].vibrate('short');
+
+            this.setState({
+                showModal: !this.state.showModal
+            })
+        });
     }
 
     handleClose() {
@@ -45,10 +56,6 @@ class DashboardModal extends Component {
             showModal: false
         })
     }
-
-
-
-
 
     render() {
         return (

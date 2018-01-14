@@ -30,11 +30,11 @@ class VideoStreamContainer extends Component {
 
 
     componentDidMount() {
-        if(!hasGetUserMedia) {
+        /*if(!hasGetUserMedia) {
             alert("Your browser cannot stream from your webcam. Please switch to Chrome or Firefox.");
             return;
         }
-        this.requestUserMedia();
+        this.requestUserMedia();*/
     }
 
     takePicture() {
@@ -123,7 +123,7 @@ class VideoStreamContainer extends Component {
                         this.img = img;
                     }}
                 />
-                <DashboardModal Myo={this.props.Myo}/>
+                <DashboardModal />
             </div>
         );
     }
