@@ -3,6 +3,7 @@ import './App.css';
 import RecordRTC from "recordrtc";
 import Camera from "react-camera";
 import FacialAnalysis from "./FacialAnalysis";
+import DashboardModal from "./DashboardModal";
 
 const hasGetUserMedia = !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
     navigator.mozGetUserMedia || navigator.msGetUserMedia);
@@ -122,7 +123,7 @@ class VideoStreamContainer extends Component {
                         this.img = img;
                     }}
                 />
-                <FacialAnalysis S3={this.props.S3} Rekognition={this.props.Rekognition} DB={this.props.DB}/>
+                <DashboardModal Myo={this.props.Myo}/>
             </div>
         );
     }
