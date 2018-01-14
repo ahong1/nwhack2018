@@ -48,21 +48,22 @@ class App extends Component {
         <div className="App">
           <Route
             exact path="/"
-            render={(routeProps) => (<LoginContainer {...routeProps} onSetTimerDuration={this.handleSetTimerDuration} />)}/>
+            render={(routeProps) => (<LoginContainer {...routeProps} onSetTimerDuration={this.handleSetTimerDuration} />)}
           />
           <Route
             exact path="/app"
-            render={(routeProps ) => (<MainAppContainer {...routeProps} timerDuration={this.state.timerDuration} />)}/>
+            render={(routeProps ) => (<MainAppContainer {...routeProps} timerDuration={this.state.timerDuration} />)}
           />
           <Route
             exact path="/stream"
-            render={(routeProps) => (<VideoStreamContainer {...routeProps} kinesis={this.state.kinesis} Rekognition={new AWS.Rekognition()} S3={new AWS.S3()} DB={new AWS.DynamoDB()}/>)}/>
-          <button onClick={() => {
-              console.log('Hey I Worked');
-              Myo.trigger('vibrate2short');
-          }}>
-            Click Me
-          </button>
+            render={(routeProps) => (<VideoStreamContainer {...routeProps} kinesis={this.state.kinesis} Rekognition={new AWS.Rekognition()} S3={new AWS.S3()} DB={new AWS.DynamoDB()}/>)}
+          />
+          {/*<button onClick={() => {*/}
+              {/*console.log('Hey I Worked');*/}
+              {/*Myo.trigger('vibrate2short');*/}
+          {/*}}>*/}
+            {/*Click Me*/}
+          {/*</button>*/}
           <Route
               exact path="/audience"
               render={(routeProps) => (<AudienceContainer {...routeProps}/>)}/>

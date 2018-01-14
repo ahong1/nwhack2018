@@ -6,6 +6,9 @@
     "aws-sdk": "^2.181.0",
     "axios": "^0.17.1",
     "import": "^0.0.6",
+    "lib": "^3.0.1",
+    "myo": "^3.0.0",
+    "myp": "^1.0.0",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.0",
     "react-camera": "^0.1.3",
@@ -13,9 +16,7 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
     "recordrtc": "^5.4.6",
-    "ws": "^4.0.0",
-    "myo": "^3.0.0",
-    "lib": "^3.0.1"
+    "ws": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

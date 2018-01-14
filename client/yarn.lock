@@ -4261,6 +4261,10 @@ myo@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/myo/-/myo-3.0.0.tgz#227907064a17bc2a7f5d32d658e1e04325ce7eb1"
 
+myp@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/myp/-/myp-1.0.0.tgz#feab3aafa4e5151124392bf6ec80f2adc3b91168"
+
 nan@^2.3.0:
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.8.0.tgz#ed715f3fe9de02b57a5e6252d90a96675e1f085a"
