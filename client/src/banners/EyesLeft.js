@@ -44,7 +44,8 @@ class EyesLeft extends Component {
 
   render() {
     return (
-      <Banner duration={5000}>
+      <Banner duration={5000} entryAnimation={animation.PAN_LEFT} exitAnimation={animation.PAN_LEFT}
+              styles={{zIndex: 999, backgroundColor: 'black'}} onAlertEnd={this.props.onAlertEnd}>
           <img className="left-arrow" src={leftArrow} style={{opacity:this.state.opacity}} /> <h1 className="eyes-left-header">EYES</h1>
       </Banner>
     );

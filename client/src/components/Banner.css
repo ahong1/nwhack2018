@@ -3,6 +3,7 @@
   width: 100vw;
   height: 100vh;
   transition: all 0.75s ease-in-out;
+  overflow: hidden;
 }
 
 /** Banner Animations **/
@@ -12,16 +13,16 @@
 .banner-pan-left-exit      { transform: translateX(-200%); transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
 
 .banner-pan-right-base     { right: 0; }
-.banner-pan-right          { transform: translateX(00%); transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
-.banner-pan-right-exit     { transform: translateX(00%); transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
+.banner-pan-right          { transform: translateX(100%); transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
+.banner-pan-right-exit     { transform: translateX(200%); transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
 
-.banner-pan-up-base        { top: 0; transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
-.banner-pan-up             { transform: translateY(100%); }
-.banner-pan-up-exit        { transform: translateY(200%); transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
+.banner-pan-up-base        { top: 100%; }
+.banner-pan-up             { transform: translateY(-100%); transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
+.banner-pan-up-exit        { transform: translateY(-200%); transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
 
-.banner-pan-down-base      { bottom: 100%; transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
-.banner-pan-down           { transform: translateY(-100%); }
-.banner-pan-down-exit      { transform: translateY(-200%); transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
+.banner-pan-down-base      { bottom: 0; }
+.banner-pan-down           { transform: translateY(100%); transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
+.banner-pan-down-exit      { transform: translateY(200%); transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
 
 .banner-fade-in-base       { opacity: 0; }
 .banner-fade-in            { opacity: 1; }

@@ -27,7 +27,8 @@ class MoveLess extends Component {
 
   render() {
     return (
-      <Banner duration={5000}>
+      <Banner duration={5000} entryAnimation={animation.PAN_LEFT} exitAnimation={animation.PAN_DOWN}
+              styles={{zIndex: 999, backgroundColor: 'black'}} onAlertEnd={this.props.onAlertEnd}>
           <h1 className="speed-header">MOVE</h1>
           <h1 className="speed-header">LESS</h1>
       </Banner>

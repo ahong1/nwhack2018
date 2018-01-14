@@ -1,18 +1,21 @@
 .timer-container {
     display: flex;
     flex: 1;
+    flex-flow: column;
     align-items: center;
     justify-content: center;
     background-color: black;
     height: 100%;
     width: 100%;
+
 }
 
 .timer-header {
     color: white;
     font-size: 10rem;
+    align-self: center;
 }
 
-span {
+.timer-span {
     color: white;
 }

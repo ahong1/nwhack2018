@@ -10,7 +10,8 @@ class Metronome extends Component {
 
     this.state = {
         location: "left",
-        speed: 2000
+        // speed: 2000,
+        intervalFn: (() => {})
       }
   }
 
@@ -21,14 +22,18 @@ class Metronome extends Component {
           this.setState({location: "left"});
     };
 
-  componentDidMount() {
-      setInterval(this.changeBallPosition, this.state.speed);
-  }
+  // componentDidMount() {
+  //     this.setState({intervalFn: setInterval(this.changeBallPosition, this.state.speed)});
+  // }
+
+  // componentWillUnmount() {
+  //   clearInterval(this.state.intervalFn);
+  // }
 
   render() {
     return (
-      <Banner duration={100000}>
-        <img className={"image-" + this.state.location} src={circle} />
+      <Banner idle styles={{...this.props.styles, display: 'flex', alignItems: 'center'}}>
+        <img className={"ball"} src={circle} />
       </Banner>
     );
   }

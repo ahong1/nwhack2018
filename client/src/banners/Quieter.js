@@ -27,7 +27,8 @@ class Quieter extends Component {
 
   render() {
     return (
-      <Banner duration={5000}>
+      <Banner duration={5000} entryAnimation={animation.FADE_IN}
+              styles={{zIndex: 999, backgroundColor: 'black'}} onAlertEnd={this.props.onAlertEnd}>
           <h1 className="quieter-header">quieter</h1>
       </Banner>
     );

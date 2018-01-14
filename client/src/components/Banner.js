@@ -5,6 +5,8 @@ import './Banner.css';
 // - entryAnimation, default "FADE_IN"
 // - exitAnimation, default "FADE_OUT"
 // - duration (in ms), default 5000
+// - idle (T/F)
+// - onAlertEnd (fn)
 
 class App extends Component {
   constructor(props) {
@@ -17,6 +19,11 @@ class App extends Component {
   }
 
   componentDidMount() {
+    if (this.props.onAlertEnd) {
+      this.props.onAlertEnd(false); // upon start, pass in true
+    }
+
+
     // set the initial position/styling of the banner,
     this.setState({ baseAnimation: this.props.entryAnimation || "FADE_IN" });
 
@@ -24,8 +31,15 @@ class App extends Component {
     setTimeout(() => this.setState({ entryAnimation: this.props.entryAnimation || "FADE_IN" }), 500);
 
     // then after this.props.duration (in ms), set the exit animation
-    if (this.props.idle) {
-      setTimeout(() => this.setState({ exitAnimation: this.props.exitAnimation || "FADE_OUT" }), this.props.duration || 5000);
+    if (!this.props.idle) {
+      setTimeout(() => {
+        this.setState({ exitAnimation: this.props.exitAnimation || "FADE_OUT" });
+
+        if (this.props.onAlertEnd) {
+          this.props.onAlertEnd(true); // upon end, pass in false
+        }
+
+      }, this.props.duration || 5000);
     }
   }
 
@@ -75,7 +89,7 @@ class App extends Component {
     }
 
     return (
-      <div className={bannerStyles} style={this.props.styles || {}}>
+      <div className={bannerStyles + ` ${this.props.className}`} style={this.props.styles || {}}>
         {this.props.children}
       </div>
     );

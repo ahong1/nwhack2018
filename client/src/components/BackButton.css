@@ -4,11 +4,23 @@
   left: 1rem;
 
   opacity: 0.5;
-
   z-index: 99999;
 }
 
 .back-button-icon {
   height: 2rem;
   width: 2rem;
+}
+
+.heart-button-container {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  opacity: 0.5;
+  z-index: 99999;
+}
+
+.heart-icon {
+  height: 1.5rem;
+  width: 1.5rem;
 }

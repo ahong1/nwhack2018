@@ -27,7 +27,8 @@ class Louder extends Component {
 
   render() {
     return (
-      <Banner duration={5000}>
+      <Banner duration={5000} entryAnimation={animation.PAN_UP} exitAnimation={animation.PAN_UP}
+              styles={{zIndex: 999, backgroundColor: 'black'}} onAlertEnd={this.props.onAlertEnd}>
           <h1 className="louder-header">LOUDER</h1>
       </Banner>
     );

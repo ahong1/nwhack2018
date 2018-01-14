@@ -3,17 +3,30 @@
     /*align-items:center;*/
     /*float: left;*/
     position: relative;
-    top:35%;
+    /*top:35%;*/
     width:15%;
-    transition: all 0.25s ease-in-out;
+    /*transform: translateX(-100%);*/
+    /*transition: all 2s ease-in-out;*/
 }
 
 .image-right {
     /*float: right;*/
     position: relative;
-    top:35%;
-    right:5%;
+    /*top:35%;*/
     width:15%;
-    transition: all 0.25s ease-in-out;
+    /*transform: translateX(100%);*/
+    /*transition: all 2000s ease-in-out;*/
 }
 
+@keyframes bounce {
+    from { transform: translateX(-50%) translate3d(85vw, 0, 0);     }
+    to   { transform: translateX(-50%) translate3d(15vw, 0, 0); }
+}
+
+.ball {
+    width: 20%;
+    animation: bounce 1.75s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}

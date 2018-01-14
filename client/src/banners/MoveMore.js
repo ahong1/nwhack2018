@@ -27,7 +27,8 @@ class MoveMore extends Component {
 
   render() {
     return (
-      <Banner duration={5000}>
+      <Banner duration={5000} entryAnimation={animation.PAN_RIGHT} exitAnimation={animation.PAN_UP}
+              styles={{zIndex: 999, backgroundColor: 'black'}} onAlertEnd={this.props.onAlertEnd}>
           <h1 className="speed-header">MOVE</h1>
           <h1 className="speed-header">MORE</h1>
       </Banner>
