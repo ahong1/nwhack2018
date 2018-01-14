@@ -9,10 +9,13 @@
 /** Login Container **/
 .login-container {
   display: flex;
-  flex: 1;
+  flex: none;
   flex-flow: column;
   justify-content: center;
   align-items: center;
+
+  height: 100%;
+  width: 100%;
 
   background-color: #86c663;
 }

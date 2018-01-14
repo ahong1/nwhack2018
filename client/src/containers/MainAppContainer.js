@@ -4,8 +4,12 @@ import BackButton from '../components/BackButton';
 import Timer from '../banners/Timer';
 import './App.css';
 
-const BlankBanner = () => (
-  <Banner styles={{backgroundColor: 'black'}} />
+const BlankBanner = ({styles}) => (
+  <Banner idle styles={{backgroundColor: 'black', ...styles}} />
+);
+
+const TransparentBanner = ({styles}) => (
+  <Banner idle styles={{backgroundColor: 'transparent', ...styles}} />
 );
 
 // list of potential valid keys
@@ -32,9 +36,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentBanner: <BlankBanner />, // blank banner
+      IDLE_SWITCH_DURATION: 5000, // how often to switch idle state screens
+
+      currentAlertBanner: <TransparentBanner />,
       isAlertPresent: false,
       idleState: KEYS.TIMER,
+
+      idleStateIntervalFn: (() => {})
     }
   }
 
@@ -56,20 +64,32 @@ class App extends Component {
       .then(res => res.json())
       .then(res => console.log('result is', res))
       .catch(err => console.warn(err));
+
+    // begin the process of switching idle states
+    const idleFn = setInterval(this.switchIdleStates, this.state.IDLE_SWITCH_DURATION);
+    this.setState({ idleStateIntervalFn: idleFn });
+  }
+
+  componentWillUnmount() {
+    if (!this.state.idleStateIntervalFn) {
+      clearInterval(this.state.idleStateIntervalFn);
+    }
   }
 
   switchIdleStates = () => {
+    if (this.state.isAlertPresent) {
+      return;
+    }
 
-
-    // const newIdleState = (idleState === KEYS.TIMER) ? KEYS.METRONOME : KEYS.TIMER;
-    // this.setState({ idleState: })
+    const newIdleState = (this.state.idleState === KEYS.TIMER) ? KEYS.BLANK : KEYS.TIMER;
+    this.setState({ idleState: newIdleState });
   };
+
 
   loadBanner = key => {
     // the key represents the message from the server that we expect to receive
     const bannerToLoad = {
       BLANK:                  <BlankBanner />,
-      TIMER:                  <Timer />,
       METRONOME:              <Timer />,
       SPEED_UP:               <Timer />,
       SLOW_DOWN:              <Timer />,
@@ -85,14 +105,21 @@ class App extends Component {
       STAY_STILL:             <Timer />,
     }[key];
 
-    this.setState({ currentBanner: bannerToLoad});
+    this.setState({ currentAlertBanner: bannerToLoad});
   };
 
   render() {
     return (
       <div className="App">
         <BackButton />
-        {this.state.currentBanner}
+        <Timer
+          timerDuration={this.props.timerDuration}
+          styles={(this.state.idleState === KEYS.TIMER) ? {opacity: 1} : {opacity: 0}}
+        />
+        <BlankBanner
+          styles={(this.state.idleState === KEYS.TIMER) ? {opacity: 0} : {opacity: 1}}
+        />
+        {this.state.currentAlertBanner}
         {/* Every 20-30 seconds, switch between <Metronome /> and <Timer /> components */}
       </div>
     );

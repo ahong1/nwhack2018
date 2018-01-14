@@ -13,7 +13,7 @@ class Timer extends Component {
         this.state = {
             timer: 0,
             time:{},
-            seconds: 70
+            seconds: 0
         }
     }
 
@@ -43,17 +43,27 @@ class Timer extends Component {
 
     minimumTwoDigits = (n) => {
         return (n < 10 ? '0' : '') + n;
-    }
+    };
 
 
   componentDidMount() {
+      // console.log('seconds is ' , this.state.seconds, this.props.timerDuration);
+      const numSecs = this.props.timerDuration * 60;
+      console.log(numSecs);
+      this.setState({ seconds: numSecs });
+
+
       this.startTimer();
-      let timeLeftVar = this.secondsToTime(this.state.seconds);
+      let timeLeftVar = this.secondsToTime(numSecs);
       this.setState({ time: timeLeftVar });
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
     startTimer = () => {
-        if (this.state.timer == 0) {
+        if (this.state.timer === 0) {
             this.timer = setInterval(this.countDown, 1000);
         }
     };
@@ -68,7 +78,7 @@ class Timer extends Component {
         });
 
         // Check if we're at zero.
-        if (seconds == 0) {
+        if (seconds === 0) {
             if (this.state.min > 0) {
                 this.setState({
                     seconds: 59,
@@ -82,7 +92,7 @@ class Timer extends Component {
     render() {
 
         return (
-            <Banner className="banner">
+            <Banner idle className="timer-container" entryAnimation='FADE_IN' styles={this.props.styles}>
                 <h1>
                     <span id="timer">{this.state.time.m} : {this.state.time.s}</span>
                 </h1>

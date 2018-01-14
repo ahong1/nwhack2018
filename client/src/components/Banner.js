@@ -24,7 +24,9 @@ class App extends Component {
     setTimeout(() => this.setState({ entryAnimation: this.props.entryAnimation || "FADE_IN" }), 500);
 
     // then after this.props.duration (in ms), set the exit animation
-    setTimeout(() => this.setState({ exitAnimation: this.props.exitAnimation || "FADE_IN" }), this.props.duration || 5000);
+    if (this.props.idle) {
+      setTimeout(() => this.setState({ exitAnimation: this.props.exitAnimation || "FADE_OUT" }), this.props.duration || 5000);
+    }
   }
 
   getBaseClassName = key => {
@@ -63,12 +65,15 @@ class App extends Component {
   };
 
   render() {
-    const bannerStyles = 'banner-container '
-      + this.getBaseClassName(this.state.baseAnimation) + ' '
-      + this.getEntryTransition(this.state.entryAnimation) + ' '
-      + this.getExitTransition(this.state.exitAnimation);
 
-    console.log('styles is ', this.props.styles);
+    let bannerStyles = 'banner-container '
+      + this.getBaseClassName(this.state.baseAnimation) + ' '
+      + this.getEntryTransition(this.state.entryAnimation);
+
+    if (!this.props.idle) {
+      bannerStyles += ' ' + this.getExitTransition(this.state.exitAnimation);
+    }
+
     return (
       <div className={bannerStyles} style={this.props.styles || {}}>
         {this.props.children}

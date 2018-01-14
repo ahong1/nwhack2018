@@ -16,19 +16,33 @@ AWS.config.update({
 class App extends Component {
 
   constructor(props) {
-    super();
+    super(props);
     this.state = {
-      kinesis: new AWS.Kinesis()
+      kinesis: new AWS.Kinesis(),
+      timerDuration: 10 // in minutes
     }
   }
+
+  handleSetTimerDuration = value => {
+    console.log('value is ', value);
+    if ((typeof value === 'number') && isFinite(value)) {
+      this.setState({ timerDuration: Number(value) });
+    }
+  };
 
   // App will contain the pages for login/app/settings
   render() {
     return (
       <HashRouter>
         <div className="App">
-          <Route exact path="/" component={LoginContainer}/>
-          <Route exact path="/app" component={MainAppContainer}/>
+          <Route
+            exact path="/"
+            render={(routeProps) => (<LoginContainer {...routeProps} onSetTimerDuration={this.handleSetTimerDuration} />)}/>
+          />
+          <Route
+            exact path="/app"
+            render={(routeProps) => (<MainAppContainer {...routeProps} timerDuration={this.state.timerDuration} />)}/>
+          />
           <Route
             exact path="/stream"
             render={(routeProps) => (<VideoStreamContainer {...routeProps} kinesis={this.state.kinesis} />)}/>
