@@ -6,6 +6,7 @@ import { HashRouter, Route } from 'react-router-dom'
 import './App.css';
 import AWS from "aws-sdk";
 import VideoStreamContainer from "./VideoStreamContainer";
+import AudienceContainer from "./AudienceContainer"
 
 AWS.config.update({
     accessKeyId: 'AKIAIIZPL74DK4BXD45Q',
@@ -46,6 +47,10 @@ class App extends Component {
           <Route
             exact path="/stream"
             render={(routeProps) => (<VideoStreamContainer {...routeProps} kinesis={this.state.kinesis} Rekognition={new AWS.Rekognition()} S3={new AWS.S3()} DB={new AWS.DynamoDB()} />)}/>
+          <Route
+              exact path="/audience"
+              render={(routeProps) => (<AudienceContainer {...routeProps}/>)}/>
+
         </div>
       </HashRouter>
     )
