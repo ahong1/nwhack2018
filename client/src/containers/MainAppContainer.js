@@ -111,7 +111,7 @@ class App extends Component {
       cache: 'default'
     };
 
-    fetch("https://ahong1.lib.id/resetBooleans@dev/", fetchArgs)
+    fetch("https://ahong1.lib.id/resetAll@dev/", fetchArgs)
       .then(res => res.json())
       .then(res => console.log(res))
       .catch(err => console.warn(err));
