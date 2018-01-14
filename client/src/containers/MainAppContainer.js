@@ -14,6 +14,9 @@ import EyesRight from "../banners/EyesRight";
 import Louder from "../banners/Louder";
 import Quieter from "../banners/Quieter";
 import Smile from "../banners/Smile";
+import AlertsOff from '../images/alerts-off.svg';
+import AlertsOn from '../images/alerts-on.svg';
+
 
 const BlankBanner = ({styles}) => (
   <Banner idle styles={{backgroundColor: 'black', ...styles}} />
@@ -55,7 +58,9 @@ class App extends Component {
 
       idleStateIntervalFn: (() => {}),
 
-      demoCount: 0
+      demoCount: 0,
+
+      alertsOn: true
     }
   }
 
@@ -90,7 +95,7 @@ class App extends Component {
   }
 
   switchIdleStates = () => {
-    if (this.state.isAlertPresent) {
+    if (this.state.isAlertPresent || !this.state.alertsOn) {
       return;
     }
 
@@ -103,6 +108,12 @@ class App extends Component {
   };
 
   loadBanner = key => {
+
+    // if alerts are disabled, don't change banners
+    if (!this.state.alertsOn) {
+      return;
+    }
+
     // the key represents the message from the server that we expect to receive
     const bannerToLoad = {
       BLANK:                  <BlankBanner />,
@@ -134,11 +145,21 @@ class App extends Component {
     this.loadBanner(nextKey)
   };
 
+  handleAlertsClick = toggle => {
+    this.setState({ alertsOn: toggle });
+  };
+
   render() {
     return (
       <div>
         <BackButton />
         <DemoButton onClick={this.handleClick}/>
+        <h1 className='room-code-text'>code: r93ik</h1>
+        {this.state.alertsOn
+          ? <div onClick={() => this.handleAlertsClick(false)} className="alerts-icon-container"><img src={AlertsOn} className="alerts-icon" alt="alerts on" /></div>
+          : <div onClick={() => this.handleAlertsClick(true)} className="alerts-icon-container"><img src={AlertsOff} className="alerts-icon" alt="alerts off" /></div>
+
+        }
         <Timer
           timerDuration={this.props.timerDuration}
           styles={(this.state.idleState === KEYS.TIMER) ? {opacity: 1} : {opacity: 0}}

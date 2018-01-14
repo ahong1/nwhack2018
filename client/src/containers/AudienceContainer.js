@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import './App.css';
 import './AudienceContainer.css';
+import BackButton from '../components/BackButton';
 import axios from 'axios';
 
 class AudienceContainer extends Component {
@@ -183,6 +184,7 @@ class AudienceContainer extends Component {
     render() {
         return (
             <div className="audienceWrapper">
+                <BackButton/>
                 <div className="row">
                     <Button className="button" onClick={this.increaseLouder}>Louder</Button>
                     <Button className="button" onClick={this.increaseQuieter}>Quieter</Button>
