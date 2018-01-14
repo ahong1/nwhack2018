@@ -26,6 +26,8 @@ const TransparentBanner = ({styles}) => (
   <Banner idle styles={{backgroundColor: 'transparent', ...styles}} />
 );
 
+let pollingIntervalFn = null;
+
 // list of potential valid keys
 const KEYS = {
   BLANK:                'BLANK',
@@ -65,15 +67,23 @@ class App extends Component {
   }
 
   componentDidMount() {
+    const self = this;
+
     const header = new Headers({'Content-Type': 'application/json'});
 
     const fetchArgs = {
-      method: 'POST',
-      body: JSON.stringify({ name: 'johnny' }),
+      method: 'GET',
       headers: header,
       mode: 'cors',
       cache: 'default'
     };
+
+    setInterval(function() {
+      fetch("https://ahong1.lib.id/checkStats@dev/", fetchArgs)
+        .then(res => res.json())
+        .then(res => self.processResults(res))
+        .catch(err => console.warn(err));
+    }, 3000);
 
     // TODO:
     // - every xxx seconds, poll the server for any updates,
@@ -87,6 +97,47 @@ class App extends Component {
     const idleFn = setInterval(this.switchIdleStates, this.state.IDLE_SWITCH_DURATION);
     this.setState({ idleStateIntervalFn: idleFn });
   }
+
+  resetAll = () => {
+    const header = new Headers({'Content-Type': 'application/json'});
+
+    const fetchArgs = {
+      method: 'GET',
+      // body: JSON.stringify({ name: 'johnny' }),
+      headers: header,
+      mode: 'cors',
+      cache: 'default'
+    };
+
+    fetch("https://ahong1.lib.id/resetAll@dev/", fetchArgs)
+      .then(res => res.json())
+      .then(res => console.log(res))
+      .catch(err => console.warn(err));
+  };
+
+  processResults = res => {
+    switch(res) {
+      case res.isfaster:
+        this.loadBanner(KEYS.SPEED_UP);
+        break;
+      case res.isSlower:
+        this.loadBanner(KEYS.SLOW_DOWN);
+        break;
+      case res.isLouder:
+        this.loadBanner(KEYS.LOUDER);
+        break;
+      case res.isQuieter:
+        this.loadBanner(KEYS.QUIETER);
+        break;
+      case res.isSmile:
+        this.loadBanner(KEYS.SMILE);
+        break;
+      default:
+        console.log('none');
+    }
+
+    this.resetAll();
+  };
 
   componentWillUnmount() {
     if (!this.state.idleStateIntervalFn) {
