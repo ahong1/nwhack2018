@@ -130,6 +130,29 @@ module.exports = (name = 'world', context, callback) => {
 						// else     console.log(data);
 						var params = {
 							ExpressionAttributeNames: {
+								"#NP": "question"
+							},
+							ExpressionAttributeValues: {
+								":t": {
+									BOOL: false
+								}
+							},
+					
+							ReturnValues: "ALL_NEW",
+							TableName: "nwHackDemo",
+							UpdateExpression: "SET #NP = :t ",
+							Key: {
+								data: {
+									S: "Data"
+								}
+							}
+						}
+					
+						DB.updateItem(params, function(err,data){
+							if (err) console.log(err, err.stack); // an error occurred
+							// else     console.log(data);
+						var params = {
+							ExpressionAttributeNames: {
 								"#NP": "faster"
 							},
 							ExpressionAttributeValues: {
@@ -267,10 +290,60 @@ module.exports = (name = 'world', context, callback) => {
 											DB.updateItem(params, function(err,data){
 												if (err) console.log(err, err.stack); // an error occurred
 												// else     console.log(data);
+												var params = {
+													ExpressionAttributeNames: {
+														"#NP": "love"
+													},
+													ExpressionAttributeValues: {
+														":t": {
+															N: String(0)
+														}
+													},
+											
+													ReturnValues: "ALL_NEW",
+													TableName: "nwHackDemo",
+													UpdateExpression: "SET #NP = :t ",
+													Key: {
+														data: {
+															S: "Data"
+														}
+													}
+												}
+											
+												DB.updateItem(params, function(err,data){
+													if (err) console.log(err, err.stack); // an error occurred
+													// else     console.log(data);
+													var params = {
+														ExpressionAttributeNames: {
+															"#NP": "like"
+														},
+														ExpressionAttributeValues: {
+															":t": {
+																N: String(0)
+															}
+														},
 												
-										
-												callback(null, data);
+														ReturnValues: "ALL_NEW",
+														TableName: "nwHackDemo",
+														UpdateExpression: "SET #NP = :t ",
+														Key: {
+															data: {
+																S: "Data"
+															}
+														}
+													}
+												
+													DB.updateItem(params, function(err,data){
+														if (err) console.log(err, err.stack); // an error occurred
+														// else     console.log(data);
+														
+												
+														callback(null, data);
+													})
+												
+												})
 											})
+										})
 											
 										})
 										

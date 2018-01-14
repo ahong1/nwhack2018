@@ -128,9 +128,33 @@ module.exports = (name = 'world', context, callback) => {
 					DB.updateItem(params, function(err,data){
 						if (err) console.log(err, err.stack); // an error occurred
 						// else     console.log(data);
-						
-				
-						callback(null, data);
+						var params = {
+							ExpressionAttributeNames: {
+								"#NP": "question"
+							},
+							ExpressionAttributeValues: {
+								":t": {
+									BOOL: false
+								}
+							},
+					
+							ReturnValues: "ALL_NEW",
+							TableName: "nwHackDemo",
+							UpdateExpression: "SET #NP = :t ",
+							Key: {
+								data: {
+									S: "Data"
+								}
+							}
+						}
+					
+						DB.updateItem(params, function(err,data){
+							if (err) console.log(err, err.stack); // an error occurred
+							// else     console.log(data);
+							
+					
+							callback(null, data);
+						})
 					})
 					
 				})
