@@ -7,6 +7,7 @@ class LoginContainer extends Component {
     return (
       <div className='login-container'>
         <Link to='app'>Go to App</Link>
+        <Link to='stream'>Go to Stream</Link>
         <p>Enter timer here</p>
         <input />
       </div>

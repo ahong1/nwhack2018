@@ -60,7 +60,7 @@ class App extends Component {
 
   switchIdleStates = () => {
 
-    
+
     // const newIdleState = (idleState === KEYS.TIMER) ? KEYS.METRONOME : KEYS.TIMER;
     // this.setState({ idleState: })
   };
