@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from '../images/logo.svg';
+import Timer from '../banners/Timer';
 import './App.css';
 import AWS from "aws-sdk";
 import VideoStreamContainer from "./VideoStreamContainer";
@@ -32,7 +32,8 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
           <VideoStreamContainer kinesis={this.state.Kinesis}/>
-
+        <Timer />
+        {/* Every 20-30 seconds, switch between <Metronome /> and <Timer /> components */}
       </div>
     );
   }
