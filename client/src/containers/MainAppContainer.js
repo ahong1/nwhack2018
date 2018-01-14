@@ -49,7 +49,7 @@ class App extends Component {
     this.state = {
       IDLE_SWITCH_DURATION: 10000, // how often to switch idle state screens
 
-      currentAlertBanner: <Smile />,
+      currentAlertBanner: <TransparentBanner />,
       isAlertPresent: false,
       idleState: KEYS.TIMER,
 
