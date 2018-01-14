@@ -5,7 +5,9 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import './App.css';
 import './AudienceContainer.css';
-import BackButton from '../components/BackButton';
+import love_black from '../images/love_black.svg';
+import thumb_up_black from '../images/thumb_up_black.svg';
+import question_black from '../images/question_black.svg';
 import axios from 'axios';
 
 class AudienceContainer extends Component {
@@ -16,8 +18,6 @@ class AudienceContainer extends Component {
         };
 
     }
-
-
 
     componentDidMount() {
         let header = new Headers({'Content-Type': 'application/json'});
@@ -163,6 +163,60 @@ class AudienceContainer extends Component {
             .catch(err => console.warn(err));
     }
 
+    like = () => {
+        console.log("Like")
+
+        let header = new Headers({'Content-Type': 'application/json'});
+
+        let fetchArgs = {
+            method: 'POST',
+            body: JSON.stringify({ name: 'johnny' }),
+            headers: header,
+            mode: 'cors',
+            cache: 'default'
+        };
+
+        fetch("https://ahong1.lib.id/incLike@dev/", fetchArgs).then(res => res.json())
+            .then(res => console.log('result is', res))
+            .catch(err => console.warn(err));
+    }
+
+    love = () => {
+        console.log("Love")
+
+        let header = new Headers({'Content-Type': 'application/json'});
+
+        let fetchArgs = {
+            method: 'POST',
+            body: JSON.stringify({ name: 'johnny' }),
+            headers: header,
+            mode: 'cors',
+            cache: 'default'
+        };
+
+        fetch("https://ahong1.lib.id/incLove@dev/", fetchArgs).then(res => res.json())
+            .then(res => console.log('result is', res))
+            .catch(err => console.warn(err));
+    }
+
+    question = () => {
+        console.log("Question")
+
+        let header = new Headers({'Content-Type': 'application/json'});
+
+        let fetchArgs = {
+            method: 'POST',
+            body: JSON.stringify({ name: 'johnny' }),
+            headers: header,
+            mode: 'cors',
+            cache: 'default'
+        };
+
+        fetch("https://ahong1.lib.id/hasQuestion@dev/", fetchArgs).then(res => res.json())
+            .then(res => console.log('result is', res))
+            .catch(err => console.warn(err));
+    }
+
 
     componentWillUnmount(){
         let header = new Headers({'Content-Type': 'application/json'});
@@ -184,18 +238,26 @@ class AudienceContainer extends Component {
     render() {
         return (
             <div className="audienceWrapper">
-                <BackButton/>
                 <div className="row">
                     <Button className="button" onClick={this.increaseLouder}>Louder</Button>
                     <Button className="button" onClick={this.increaseQuieter}>Quieter</Button>
+                    <Button className="icon-button" onClick={this.love}>
+                        <img src={love_black} />
+                    </Button>
                 </div>
                 <div className="row">
                     <Button className="button" onClick={this.increaseSpeed}>Faster</Button>
                     <Button className="button" onClick={this.increaseSlow}>Slower</Button>
+                    <Button className="icon-button" onClick={this.like}>
+                        <img src={thumb_up_black} />
+                    </Button>
                 </div>
                 <div className="row">
-                    <Button onClick={this.lookLeft}>Look Left</Button>
-                    <Button onClick={this.lookRight}>Look Right</Button>
+                    <Button className="button" onClick={this.lookLeft}>Look Left</Button>
+                    <Button className="button" onClick={this.lookRight}>Look Right</Button>
+                    <Button className="icon-button" onClick={this.question}> 
+                        <img src={question_black} />
+                    </Button>
                 </div>
                 <Button className="button" onClick={this.increaseSmile}>Smile</Button>
 
