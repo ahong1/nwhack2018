@@ -29,7 +29,7 @@ class DashboardModal extends Component {
     componentDidMount() {
         let header = new Headers({'Content-Type': 'application/json'});
 
-        let dbModal = this;
+        var dbModal = this;
 
         let fetchArgs = {
             method: 'POST',
@@ -48,7 +48,11 @@ class DashboardModal extends Component {
             Myo.myos[0].vibrate('short');
             Myo.myos[0].vibrate('short');
             dbModal.setState({ showModal: true,
-                resetModal: setTimeout(1000, dbModal.handleClose )
+                resetModal: setTimeout(1000, function(){
+                    dbModal.setState({
+                        showModal: false
+                    })
+                } )
 
             });
 

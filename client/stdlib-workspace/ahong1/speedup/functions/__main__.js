@@ -31,7 +31,7 @@ module.exports = (name = 'world', context, callback) => {
 
 		var params = {
 				ExpressionAttributeNames: {
-						"#NP": "faster"
+						"#NP": "Faster"
 				},
 				ExpressionAttributeValues: {
 						":t": {

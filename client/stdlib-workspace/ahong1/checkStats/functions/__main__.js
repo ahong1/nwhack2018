@@ -26,7 +26,7 @@ module.exports = (name = 'world', context, callback) => {
 
         var results = {
 
-          isfaster: data.Item.isfaster.BOOL,
+          isFaster: data.Item.isfaster.BOOL,
             isLouder: data.Item.isLouder.BOOL,
             isSlower: data.Item.isSlower.BOOL,
             isQuieter: data.Item.isSlower.BOOL,
