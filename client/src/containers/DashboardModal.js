@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import axios from "axios"
 import {Modal} from 'react-bootstrap'
-import Myo from 'myp';
+import Myo from 'myo';
 
 
 Myo.connect('com.example.ticktocktock');
