@@ -1,11 +1,8 @@
 /**
 * A basic Hello World function
- * @acl *
 * @param {string} name Who you're saying hello to
 * @returns {any}
 */
-
-
 module.exports = (name = 'world', context, callback) => {
 
   var AWS = require("aws-sdk");
@@ -26,15 +23,13 @@ module.exports = (name = 'world', context, callback) => {
     }
   }, function(err, data) {
 
-    console.log(data.Item.numPeople.N)
-
     var params = {
       ExpressionAttributeNames: {
-        "#NP": "numPeople"
+        "#NP": "question"
       },
       ExpressionAttributeValues: {
         ":t": {
-          N: String(parseInt(data.Item.numPeople.N) + 1)
+          BOOL: true
         }
       },
 
@@ -50,9 +45,10 @@ module.exports = (name = 'world', context, callback) => {
 
     DB.updateItem(params, function(err,data){
       if (err) console.log(err, err.stack); // an error occurred
-      else     console.log(data);
+      // else     console.log(data);
 
       callback(null, data);
     })
   })
+
 };

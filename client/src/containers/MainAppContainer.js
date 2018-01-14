@@ -14,6 +14,11 @@ import EyesRight from "../banners/EyesRight";
 import Louder from "../banners/Louder";
 import Quieter from "../banners/Quieter";
 import Smile from "../banners/Smile";
+import Like from "../banners/Like";
+import Love from "../banners/Love";
+import Question from "../banners/Question"
+import AlertsOff from '../images/alerts-off.svg';
+import AlertsOn from '../images/alerts-on.svg';
 
 const BlankBanner = ({styles}) => (
   <Banner idle styles={{backgroundColor: 'black', ...styles}} />
@@ -22,6 +27,8 @@ const BlankBanner = ({styles}) => (
 const TransparentBanner = ({styles}) => (
   <Banner idle styles={{backgroundColor: 'transparent', ...styles}} />
 );
+
+let pollingIntervalFn = null;
 
 // list of potential valid keys
 const KEYS = {
@@ -55,20 +62,30 @@ class App extends Component {
 
       idleStateIntervalFn: (() => {}),
 
-      demoCount: 0
+      demoCount: 0,
+
+      alertsOn: true
     }
   }
 
   componentDidMount() {
+    const self = this;
+
     const header = new Headers({'Content-Type': 'application/json'});
 
     const fetchArgs = {
-      method: 'POST',
-      body: JSON.stringify({ name: 'johnny' }),
+      method: 'GET',
       headers: header,
       mode: 'cors',
       cache: 'default'
     };
+
+    setInterval(function() {
+      fetch("https://ahong1.lib.id/checkStats@dev/", fetchArgs)
+        .then(res => res.json())
+        .then(res => self.processResults(res))
+        .catch(err => console.warn(err));
+    }, 3000);
 
     // TODO:
     // - every xxx seconds, poll the server for any updates,
@@ -83,6 +100,47 @@ class App extends Component {
     this.setState({ idleStateIntervalFn: idleFn });
   }
 
+  resetAll = () => {
+    const header = new Headers({'Content-Type': 'application/json'});
+
+    const fetchArgs = {
+      method: 'GET',
+      // body: JSON.stringify({ name: 'johnny' }),
+      headers: header,
+      mode: 'cors',
+      cache: 'default'
+    };
+
+    fetch("https://ahong1.lib.id/resetAll@dev/", fetchArgs)
+      .then(res => res.json())
+      .then(res => console.log(res))
+      .catch(err => console.warn(err));
+  };
+
+  processResults = res => {
+    switch(res) {
+      case res.isfaster:
+        this.loadBanner(KEYS.SPEED_UP);
+        break;
+      case res.isSlower:
+        this.loadBanner(KEYS.SLOW_DOWN);
+        break;
+      case res.isLouder:
+        this.loadBanner(KEYS.LOUDER);
+        break;
+      case res.isQuieter:
+        this.loadBanner(KEYS.QUIETER);
+        break;
+      case res.isSmile:
+        this.loadBanner(KEYS.SMILE);
+        break;
+      default:
+        console.log('none');
+    }
+
+    this.resetAll();
+  };
+
   componentWillUnmount() {
     if (!this.state.idleStateIntervalFn) {
       clearInterval(this.state.idleStateIntervalFn);
@@ -90,7 +148,7 @@ class App extends Component {
   }
 
   switchIdleStates = () => {
-    if (this.state.isAlertPresent) {
+    if (this.state.isAlertPresent || !this.state.alertsOn) {
       return;
     }
 
@@ -103,6 +161,12 @@ class App extends Component {
   };
 
   loadBanner = key => {
+
+    // if alerts are disabled, don't change banners
+    if (!this.state.alertsOn) {
+      return;
+    }
+
     // the key represents the message from the server that we expect to receive
     const bannerToLoad = {
       BLANK:                  <BlankBanner />,
@@ -117,6 +181,9 @@ class App extends Component {
       EYES_LEFT_AND_RIGHT:    <Timer />, // *
       MOVE_MORE:              <MoveMore onAlertEnd={this.handleAlertEnd} />,
       MOVE_LESS:              <MoveLess onAlertEnd={this.handleAlertEnd} />,
+        LIKE:                 <Like onAlertEnd={this.handleAlertEnd} />,
+        LOVE:                 <Love onAlertEnd={this.handleAlertEnd} />,
+      QUESTION:               <Question onAlertEnd={this.handleAlertEnd} />,
       GESTURE:                <Timer />, // *
       STAY_STILL:             <Timer />, // *
     }[key];
@@ -127,11 +194,15 @@ class App extends Component {
 
   handleClick = () => {
     const keys = ['SPEED_UP', 'SLOW_DOWN', 'LOUDER', 'QUIETER', 'EYES_LEFT', 'EYES_RIGHT',
-                  'MOVE_MORE', 'MOVE_LESS'];
+                  'MOVE_MORE', 'MOVE_LESS', 'LIKE', 'LOVE', 'QUESTION'];
     const nextKey = keys[this.state.demoCount % keys.length];
     this.setState({demoCount: this.state.demoCount + 1 });
 
     this.loadBanner(nextKey)
+  };
+
+  handleAlertsClick = toggle => {
+    this.setState({ alertsOn: toggle });
   };
 
   render() {
@@ -139,6 +210,12 @@ class App extends Component {
       <div>
         <BackButton />
         <DemoButton onClick={this.handleClick}/>
+        <h1 className='room-code-text'>code: r93ik</h1>
+        {this.state.alertsOn
+          ? <div onClick={() => this.handleAlertsClick(false)} className="alerts-icon-container"><img src={AlertsOn} className="alerts-icon" alt="alerts on" /></div>
+          : <div onClick={() => this.handleAlertsClick(true)} className="alerts-icon-container"><img src={AlertsOff} className="alerts-icon" alt="alerts off" /></div>
+
+        }
         <Timer
           timerDuration={this.props.timerDuration}
           styles={(this.state.idleState === KEYS.TIMER) ? {opacity: 1} : {opacity: 0}}

@@ -17,6 +17,35 @@
   width: 100%;
 }
 
+.alerts-icon-container {
+  position: absolute;
+  bottom: 0.9rem;
+  right: 3.5rem;
+
+  opacity: 0.5;
+  z-index: 99999;
+}
+.alerts-icon-container:active {
+  transform: scale(1.25);
+  transition: 0.25s;
+}
+
+.alerts-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.room-code-text {
+  font-size: 1.5rem;
+  position: absolute;
+  font-weight: 400;
+  bottom: 1rem;
+  right: 6rem;
+  opacity: 0.5;
+  z-index: 99999;
+  color: white;
+}
+
 /** Login Container **/
 .login-container {
   display: flex;
@@ -116,6 +145,7 @@
 
   transition: 0.25s;
 }
+
 
 .title-1-base { position: absolute; left: 0; transform: translate3D(-2.5rem, -3.5rem, 0); }
 .title-1 { animation: title-1-fade 0.5s; animation-iteration-count: 1; animation-timing-function: ease-out; }
