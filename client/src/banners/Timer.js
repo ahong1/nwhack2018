@@ -19,11 +19,6 @@ class Timer extends Component {
 
     secondsToTime = (secs) => {
 
-        // let divisor_for_minutes = secs % (60 * 60);
-        // this.setState.min = Math.floor(divisor_for_minutes / 60);
-        //
-        // let divisor_for_seconds = divisor_for_minutes % 60;
-        // this.setState.seconds = Math.ceil(divisor_for_seconds);
         let divisor_for_minutes = secs % (60 * 60);
         let minutes = Math.floor(divisor_for_minutes / 60);
 

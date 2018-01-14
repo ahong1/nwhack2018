@@ -1,0 +1,19 @@
+.image-left {
+    /*display:flex;*/
+    /*align-items:center;*/
+    /*float: left;*/
+    position: relative;
+    top:35%;
+    width:15%;
+    transition: all 0.25s ease-in-out;
+}
+
+.image-right {
+    /*float: right;*/
+    position: relative;
+    top:35%;
+    right:5%;
+    width:15%;
+    transition: all 0.25s ease-in-out;
+}
+
