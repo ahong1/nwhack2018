@@ -8,15 +8,9 @@
     "react": "^16.2.0",
     "react-camera": "^0.1.3",
     "react-dom": "^16.2.0",
-<<<<<<< HEAD
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.17"
-=======
     "react-scripts": "1.0.17",
-    "aws-sdk": "^2.181.0",
-    "react-camera": "^0.1.3",
     "recordrtc": "^5.4.6"
->>>>>>> 073d359576dd6fb2ddae295707ee507d958cb7e4
   },
   "scripts": {
     "start": "react-scripts start",
