@@ -68,8 +68,9 @@ class App extends Component {
       + this.getEntryTransition(this.state.entryAnimation) + ' '
       + this.getExitTransition(this.state.exitAnimation);
 
+    console.log('styles is ', this.props.styles);
     return (
-      <div className={bannerStyles}>
+      <div className={bannerStyles} style={this.props.styles || {}}>
         {this.props.children}
       </div>
     );

@@ -1,0 +1,14 @@
+.back-button-container {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+
+  opacity: 0.5;
+
+  z-index: 99999;
+}
+
+.back-button-icon {
+  height: 2rem;
+  width: 2rem;
+}
