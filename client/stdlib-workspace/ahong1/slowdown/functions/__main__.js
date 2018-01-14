@@ -1,5 +1,6 @@
 /**
 * A basic Hello World function
+ * @acl *
 * @param {string} name Who you're saying hello to
 * @returns {any}
 */
@@ -55,7 +56,7 @@ DB.getItem({
 				if (err) console.log(err, err.stack); // an error occurred
 				// else     console.log(data);
 
-				if (slows >= threshold) {
+				if (slows >= 2) {
 					console.log("it's here ma dudes");
 					var params = {
 						ExpressionAttributeNames: {

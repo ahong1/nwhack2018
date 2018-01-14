@@ -1,5 +1,6 @@
 /**
 * A basic Hello World function
+ * @acl *
 * @param {string} name Who you're saying hello to
 * @returns {any}
 */
@@ -55,7 +56,7 @@ module.exports = (name = 'world', context, callback) => {
           if (err) console.log(err, err.stack); // an error occurred
 					// else     console.log(data);
 					
-					if (smiles >= threshold) {
+					if (smiles >= 2) {
 						var params = {
 							ExpressionAttributeNames: {
 									"#NP": "isSmile"
