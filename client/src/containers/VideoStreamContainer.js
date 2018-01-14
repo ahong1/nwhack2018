@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import RecordRTC from "recordrtc";
-import BackButton from '../components/BackButton';
 import Camera from "react-camera";
-import FacialAnaysis from "../containers/FacialAnalysis.js";
 import FacialAnalysis from "./FacialAnalysis";
 
 const hasGetUserMedia = !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||

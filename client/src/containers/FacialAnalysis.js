@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import RecordRTC from "recordrtc";
-import BackButton from '../components/BackButton';
-import Camera from "react-camera";
-
-const hasGetUserMedia = !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
-navigator.mozGetUserMedia || navigator.msGetUserMedia);
-
-var recordRTC;
+//import axios from "axios"
 
 class FacialAnalysis extends Component {
     constructor(props) {
@@ -21,7 +14,10 @@ class FacialAnalysis extends Component {
     }
 
     componentDidMount() {
+        /*axios.get("https://ahong1.lib.id/addUserToRoom@dev/").then(() => {
+            console.log("done")
 
+        })*/
 
 
     }
@@ -33,22 +29,6 @@ class FacialAnalysis extends Component {
     render() {
         return (
             <div style={style.container}>
-                <Camera
-                    style={style.preview}
-                    ref={(cam) => {
-                        this.camera = cam;
-                    }}
-                >
-                    <div style={style.captureContainer} onClick={this.takePicture}>
-                        <div style={style.captureButton} />
-                    </div>
-                </Camera>
-                <img
-                    style={style.captureImage}
-                    ref={(img) => {
-                        this.img = img;
-                    }}
-                />
             </div>
         );
     }
