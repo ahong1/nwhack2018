@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import './App.css';
+import './AudienceContainer.css';
 import axios from 'axios';
 
 class AudienceContainer extends Component {
@@ -124,6 +125,43 @@ class AudienceContainer extends Component {
             .catch(err => console.warn(err));
     }
 
+    lookLeft = () => {
+        console.log("Look Left")
+
+        let header = new Headers({'Content-Type': 'application/json'});
+
+        let fetchArgs = {
+            method: 'POST',
+            body: JSON.stringify({ name: 'johnny' }),
+            headers: header,
+            mode: 'cors',
+            cache: 'default'
+        };
+
+        fetch("https://ahong1.lib.id/lookLeft@dev/", fetchArgs).then(res => res.json())
+            .then(res => console.log('result is', res))
+            .catch(err => console.warn(err));
+    }
+
+
+    lookRight = () => {
+        console.log("Look Right")
+
+        let header = new Headers({'Content-Type': 'application/json'});
+
+        let fetchArgs = {
+            method: 'POST',
+            body: JSON.stringify({ name: 'johnny' }),
+            headers: header,
+            mode: 'cors',
+            cache: 'default'
+        };
+
+        fetch("https://ahong1.lib.id/lookRight@dev/", fetchArgs).then(res => res.json())
+            .then(res => console.log('result is', res))
+            .catch(err => console.warn(err));
+    }
+
 
     componentWillUnmount(){
         let header = new Headers({'Content-Type': 'application/json'});
@@ -142,23 +180,22 @@ class AudienceContainer extends Component {
 
     }
 
-
-
-
-
-
-
-
     render() {
         return (
             <div className="audienceWrapper">
-                <Button onClick={this.increaseLouder}>Louder!</Button>
-                <Button onClick={this.increaseQuieter}>Quiet!</Button>
-                <Button onClick={this.increaseSpeed}>Faster!</Button>
-                <Button onClick={this.increaseSlow}>Slower!</Button>
-                <Button onClick={this.increaseSmile}>Smile!</Button>
-
-
+                <div className="row">
+                    <Button className="button" onClick={this.increaseLouder}>Louder</Button>
+                    <Button className="button" onClick={this.increaseQuieter}>Quieter</Button>
+                </div>
+                <div className="row">
+                    <Button className="button" onClick={this.increaseSpeed}>Faster</Button>
+                    <Button className="button" onClick={this.increaseSlow}>Slower</Button>
+                </div>
+                <div className="row">
+                    <Button onClick={this.lookLeft}>Look Left</Button>
+                    <Button onClick={this.lookRight}>Look Right</Button>
+                </div>
+                <Button className="button" onClick={this.increaseSmile}>Smile</Button>
 
             </div>
         );
