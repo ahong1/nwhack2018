@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import './App.css';
+import './AudienceContainer.css';
 import axios from 'axios';
 
 class AudienceContainer extends Component {
@@ -142,24 +143,18 @@ class AudienceContainer extends Component {
 
     }
 
-
-
-
-
-
-
-
     render() {
         return (
             <div className="audienceWrapper">
-                <Button onClick={this.increaseLouder}>Louder!</Button>
-                <Button onClick={this.increaseQuieter}>Quiet!</Button>
-                <Button onClick={this.increaseSpeed}>Faster!</Button>
-                <Button onClick={this.increaseSlow}>Slower!</Button>
-                <Button onClick={this.increaseSmile}>Smile!</Button>
-
-
-
+                <div className="row">
+                    <Button className="button" onClick={this.increaseLouder}>Louder</Button>
+                    <Button className="button" onClick={this.increaseQuieter}>Quieter</Button>
+                </div>
+                <div className="row">
+                    <Button className="button" onClick={this.increaseSpeed}>Faster</Button>
+                    <Button className="button" onClick={this.increaseSlow}>Slower</Button>
+                </div>
+                <Button className="button" onClick={this.increaseSmile}>Smile</Button>
             </div>
         );
     }

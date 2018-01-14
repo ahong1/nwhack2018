@@ -13,6 +13,7 @@ import EyesLeft from "../banners/EyesLeft";
 import EyesRight from "../banners/EyesRight";
 import Louder from "../banners/Louder";
 import Quieter from "../banners/Quieter";
+import Smile from "../banners/Smile";
 
 const BlankBanner = ({styles}) => (
   <Banner idle styles={{backgroundColor: 'black', ...styles}} />
@@ -48,7 +49,7 @@ class App extends Component {
     this.state = {
       IDLE_SWITCH_DURATION: 10000, // how often to switch idle state screens
 
-      currentAlertBanner: <TransparentBanner />,
+      currentAlertBanner: <Smile />,
       isAlertPresent: false,
       idleState: KEYS.TIMER,
 
@@ -110,7 +111,7 @@ class App extends Component {
       SLOW_DOWN:              <SlowDown onAlertEnd={this.handleAlertEnd} />,
       LOUDER:                 <Louder onAlertEnd={this.handleAlertEnd} />,
       QUIETER:                <Quieter onAlertEnd={this.handleAlertEnd} />,
-      SMILE:                  <Timer />, // *
+      SMILE:                  <Smile onAlertEnd={this.handleAlertEnd}/>, // *
       EYES_LEFT:              <EyesLeft onAlertEnd={this.handleAlertEnd} />,
       EYES_RIGHT:             <EyesRight onAlertEnd={this.handleAlertEnd} />,
       EYES_LEFT_AND_RIGHT:    <Timer />, // *

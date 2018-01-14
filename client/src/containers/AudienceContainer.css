@@ -1,0 +1,21 @@
+.audienceWrapper {
+    margin-top:20vh;
+}
+
+.row {
+    width: 100%;
+    margin: auto;
+    display: inline-table;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.button {
+    background-color: white;
+    width: 230px;
+    height: 50px;
+    margin: auto;
+    display: inline-block;
+    margin: 10px;
+    font-size:25px;
+}
