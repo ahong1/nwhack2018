@@ -184,6 +184,7 @@ class AudienceContainer extends Component {
     render() {
         return (
             <div className="audienceWrapper">
+                <BackButton/>
                 <div className="row">
                     <Button className="button" onClick={this.increaseLouder}>Louder</Button>
                     <Button className="button" onClick={this.increaseQuieter}>Quieter</Button>
