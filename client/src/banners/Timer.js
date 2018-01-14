@@ -88,7 +88,7 @@ class Timer extends Component {
 
         return (
             <Banner idle className="timer-container" entryAnimation='FADE_IN' styles={this.props.styles}>
-                <h1>
+                <h1 className="timer-header">
                     <span id="timer">{this.state.time.m} : {this.state.time.s}</span>
                 </h1>
             </Banner>

@@ -1,0 +1,20 @@
+.speed-header {
+    font-size: 10em;
+    color: white;
+    margin: 0;
+}
+
+.louder-header {
+    font-size: 8em;
+    color: white;
+    margin: 0;
+    padding-top: 27vh;
+}
+
+.quieter-header {
+    font-size: 8em;
+    color: white;
+    margin: 0;
+    padding-top: 27vh;
+    padding-right: 20px;
+}
