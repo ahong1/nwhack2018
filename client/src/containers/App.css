@@ -33,6 +33,7 @@
 
 .login-panel {
   display: flex;
+  justify-content: center;
   height: min-content;
   width: 80%;
   margin-top: 2rem;

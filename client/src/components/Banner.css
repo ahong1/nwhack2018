@@ -12,7 +12,7 @@
 .banner-pan-left           { transform: translateX(-100%); transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
 .banner-pan-left-exit      { transform: translateX(-200%); transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
 
-.banner-pan-right-base     { right: 0; }
+.banner-pan-right-base     { left: -100%; }
 .banner-pan-right          { transform: translateX(100%); transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
 .banner-pan-right-exit     { transform: translateX(200%); transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
 
@@ -20,7 +20,7 @@
 .banner-pan-up             { transform: translateY(-100%); transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
 .banner-pan-up-exit        { transform: translateY(-200%); transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
 
-.banner-pan-down-base      { bottom: 0; }
+.banner-pan-down-base      { top: -100%; }
 .banner-pan-down           { transform: translateY(100%); transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
 .banner-pan-down-exit      { transform: translateY(200%); transition-timing-function: cubic-bezier(0.5, -0.5, 0.25, 1.25); }
 
