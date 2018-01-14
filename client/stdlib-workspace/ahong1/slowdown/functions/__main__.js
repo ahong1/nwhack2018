@@ -1,5 +1,6 @@
 /**
 * A basic Hello World function
+ * @acl *
 * @param {string} name Who you're saying hello to
 * @returns {any}
 */
