@@ -4,7 +4,10 @@
   "description": "",
   "author": "ahong1 <alf.hong91@gmail.com>",
   "main": "functions/__main__.js",
-  "dependencies": {},
+  "dependencies": {
+    "aws-sdk": "^2.181.0"
+
+  },
   "private": true,
   "stdlib": {
     "build": "faaslang",
