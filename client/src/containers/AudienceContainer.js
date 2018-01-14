@@ -5,6 +5,9 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import './App.css';
 import './AudienceContainer.css';
+import love_black from '../images/love_black.svg';
+import thumb_up_black from '../images/thumb_up_black.svg';
+import question_black from '../images/question_black.svg';
 import axios from 'axios';
 
 class AudienceContainer extends Component {
@@ -184,14 +187,23 @@ class AudienceContainer extends Component {
                 <div className="row">
                     <Button className="button" onClick={this.increaseLouder}>Louder</Button>
                     <Button className="button" onClick={this.increaseQuieter}>Quieter</Button>
+                    <Button className="icon-button" onClick={this.increaseQuieter}>
+                        <img src={love_black} />
+                    </Button> //TODO
                 </div>
                 <div className="row">
                     <Button className="button" onClick={this.increaseSpeed}>Faster</Button>
                     <Button className="button" onClick={this.increaseSlow}>Slower</Button>
+                    <Button className="icon-button" onClick={this.increaseQuieter}>
+                        <img src={thumb_up_black} />
+                    </Button> //TODO
                 </div>
                 <div className="row">
                     <Button className="button" onClick={this.lookLeft}>Look Left</Button>
                     <Button className="button" onClick={this.lookRight}>Look Right</Button>
+                    <Button className="icon-button" onClick={this.increaseQuieter}>
+                        <img src={question_black} />
+                    </Button> //TODO
                 </div>
                 <Button className="button" onClick={this.increaseSmile}>Smile</Button>
 

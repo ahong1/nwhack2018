@@ -14,6 +14,9 @@ import EyesRight from "../banners/EyesRight";
 import Louder from "../banners/Louder";
 import Quieter from "../banners/Quieter";
 import Smile from "../banners/Smile";
+import Like from "../banners/Like";
+import Love from "../banners/Love";
+import Question from "../banners/Question"
 
 const BlankBanner = ({styles}) => (
   <Banner idle styles={{backgroundColor: 'black', ...styles}} />
@@ -117,6 +120,9 @@ class App extends Component {
       EYES_LEFT_AND_RIGHT:    <Timer />, // *
       MOVE_MORE:              <MoveMore onAlertEnd={this.handleAlertEnd} />,
       MOVE_LESS:              <MoveLess onAlertEnd={this.handleAlertEnd} />,
+        LIKE:                 <Like onAlertEnd={this.handleAlertEnd} />,
+        LOVE:                 <Love onAlertEnd={this.handleAlertEnd} />,
+      QUESTION:               <Question onAlertEnd={this.handleAlertEnd} />,
       GESTURE:                <Timer />, // *
       STAY_STILL:             <Timer />, // *
     }[key];
@@ -127,7 +133,7 @@ class App extends Component {
 
   handleClick = () => {
     const keys = ['SPEED_UP', 'SLOW_DOWN', 'LOUDER', 'QUIETER', 'EYES_LEFT', 'EYES_RIGHT',
-                  'MOVE_MORE', 'MOVE_LESS'];
+                  'MOVE_MORE', 'MOVE_LESS', 'LIKE', 'LOVE', 'QUESTION'];
     const nextKey = keys[this.state.demoCount % keys.length];
     this.setState({demoCount: this.state.demoCount + 1 });
 
