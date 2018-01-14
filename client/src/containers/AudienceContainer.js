@@ -9,6 +9,7 @@ import love_black from '../images/love_black.svg';
 import thumb_up_black from '../images/thumb_up_black.svg';
 import question_black from '../images/question_black.svg';
 import axios from 'axios';
+import BackButton from '../components/BackButton';
 
 class AudienceContainer extends Component {
     constructor(props) {
@@ -48,9 +49,10 @@ class AudienceContainer extends Component {
             cache: 'default'
         };
 
-        fetch("https://ahong1.lib.id/increaseLoud@dev/", fetchArgs).then(res => res.json())
-            .then(res => console.log('result is', res))
-            .catch(err => console.warn(err));
+        fetch("https://ahong1.lib.id/increaseLoud@dev/", fetchArgs)
+          .then(res => res.json())
+          .then(res => console.log('result is', res))
+          .catch(err => console.warn(err));
     }
 
     increaseQuieter = () => {
@@ -238,6 +240,7 @@ class AudienceContainer extends Component {
     render() {
         return (
             <div className="audienceWrapper">
+                <BackButton/>
                 <div className="row">
                     <Button className="button" onClick={this.increaseLouder}>Louder</Button>
                     <Button className="button" onClick={this.increaseQuieter}>Quieter</Button>

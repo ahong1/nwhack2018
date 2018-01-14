@@ -82,8 +82,8 @@ class App extends Component {
 
     setInterval(function() {
       fetch("https://ahong1.lib.id/checkStats@dev/", fetchArgs)
-        .then(res => res.json())
-        .then(res => self.processResults(res))
+        .then(res => { return res.json();})
+        .then(res => {self.processResults(res);})
         .catch(err => console.warn(err));
     }, 3000);
 
@@ -111,39 +111,38 @@ class App extends Component {
       cache: 'default'
     };
 
-    fetch("https://ahong1.lib.id/resetAll@dev/", fetchArgs)
+    fetch("https://ahong1.lib.id/resetBooleans@dev/", fetchArgs)
       .then(res => res.json())
       .then(res => console.log(res))
       .catch(err => console.warn(err));
   };
 
   processResults = res => {
-    switch(res) {
-      case res.isfaster:
-        this.loadBanner(KEYS.SPEED_UP);
-        break;
-      case res.isSlower:
-        this.loadBanner(KEYS.SLOW_DOWN);
-        break;
-      case res.isLouder:
-        this.loadBanner(KEYS.LOUDER);
-        break;
-      case res.isQuieter:
-        this.loadBanner(KEYS.QUIETER);
-        break;
-      case res.isSmile:
-        this.loadBanner(KEYS.SMILE);
-        break;
-      default:
-        console.log('none');
+    console.table(res);
+    // console.log(Object.keys(res));
+    console.log(res.isLouder);
+    // console.log(res.isfaster);
+    if (res.isfaster) {
+      this.loadBanner(KEYS.SPEED_UP);
+    } else if (res.isSlower) {
+      this.loadBanner(KEYS.SLOW_DOWN);
+    } else if (res.isLouder) {
+      this.loadBanner(KEYS.LOUDER);
+    } else if (res.isQuieter) {
+      this.loadBanner(KEYS.QUIETER);
+    } else if (res.isSmile) {
+      this.loadBanner(KEYS.SMILE);
     }
 
     this.resetAll();
   };
 
   componentWillUnmount() {
-    if (!this.state.idleStateIntervalFn) {
+    if (this.state.idleStateIntervalFn) {
       clearInterval(this.state.idleStateIntervalFn);
+    }
+    if (pollingIntervalFn) {
+      clearInterval(pollingIntervalFn)
     }
   }
 
