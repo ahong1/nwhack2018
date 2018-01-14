@@ -6,6 +6,14 @@ import { HashRouter, Route } from 'react-router-dom'
 import './App.css';
 import AWS from "aws-sdk";
 import VideoStreamContainer from "./VideoStreamContainer";
+import Myo from 'myo';
+
+Myo.connect('com.example.ticktocktock');
+
+Myo.on('vibrateMed', ()=>{
+    console.log('Hello Myo!');
+    this.vibrate();
+});
 
 AWS.config.update({
     accessKeyId: 'AKIAIIZPL74DK4BXD45Q',
@@ -41,11 +49,17 @@ class App extends Component {
           />
           <Route
             exact path="/app"
-            render={(routeProps) => (<MainAppContainer {...routeProps} timerDuration={this.state.timerDuration} />)}/>
+            render={(routeProps ) => (<MainAppContainer {...routeProps} timerDuration={this.state.timerDuration} />)}/>
           />
           <Route
             exact path="/stream"
             render={(routeProps) => (<VideoStreamContainer {...routeProps} kinesis={this.state.kinesis} Rekognition={new AWS.Rekognition()} S3={new AWS.S3()} DB={new AWS.DynamoDB()} />)}/>
+          <button onClick={() => {
+              console.log('Hey I Worked');
+              Myo.vibrate();
+          }}>
+            Click Me
+          </button>
         </div>
       </HashRouter>
     )

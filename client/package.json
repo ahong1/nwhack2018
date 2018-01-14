@@ -11,7 +11,9 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
     "recordrtc": "^5.4.6",
-    "axios": "^0.17.1"
+    "axios": "^0.17.1",
+    "ws": "^4.0.0",
+    "myo": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
