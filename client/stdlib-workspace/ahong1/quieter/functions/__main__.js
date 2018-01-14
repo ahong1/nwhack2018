@@ -4,19 +4,17 @@
 * @returns {any}
 */
 module.exports = (name = 'world', context, callback) => {
-
 	var AWS = require("aws-sdk");
-    AWS.config.update({
-        accessKeyId: 'AKIAIIZPL74DK4BXD45Q',
-        secretAccessKey: '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',
-        region: "us-west-2"
-		});
-		
-	var DB = new AWS.DynamoDB();
-	var threshold;
-	var fasts;
+	AWS.config.update({
+			accessKeyId: 'AKIAIIZPL74DK4BXD45Q',
+			secretAccessKey: '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',
+			region: "us-west-2"
+	});
+var DB = new AWS.DynamoDB();
+var threshold;
+var quiets;
 
-	DB.getItem({
+DB.getItem({
 		TableName: "nwHackDemo",
 		Key: {
 				data: {
@@ -27,15 +25,15 @@ module.exports = (name = 'world', context, callback) => {
 
 		console.log(data.Item.numPeople.N)
 		threshold = parseInt(data.Item.numPeople.N) / 5;
-		fasts = parseInt(data.Item.faster.N) + 1;
+		quiets = parseInt(data.Item.quieter.N) + 1;
 
 		var params = {
 				ExpressionAttributeNames: {
-						"#NP": "faster"
+						"#NP": "quieter"
 				},
 				ExpressionAttributeValues: {
 						":t": {
-								N: String(fasts)
+								N: String(quiets)
 						}
 				},
 
@@ -54,12 +52,11 @@ module.exports = (name = 'world', context, callback) => {
 		DB.updateItem(params, function(err,data){
 				if (err) console.log(err, err.stack); // an error occurred
 				// else     console.log(data);
-
-				if (fasts >= threshold) {
+				if (quiets >= threshold) {
 
 					var params = {
 						ExpressionAttributeNames: {
-								"#NP": "isFaster"
+								"#NP": "isQuieter"
 						},
 						ExpressionAttributeValues: {
 								":t": {
@@ -88,5 +85,5 @@ module.exports = (name = 'world', context, callback) => {
 		})
 
 })
-	
+
 };
