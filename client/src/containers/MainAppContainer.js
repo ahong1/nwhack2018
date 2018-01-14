@@ -85,7 +85,7 @@ class App extends Component {
         .then(res => { return res.json();})
         .then(res => {self.processResults(res);})
         .catch(err => console.warn(err));
-    }, 3000);
+    }, 10000);
 
     // TODO:
     // - every xxx seconds, poll the server for any updates,
