@@ -19,8 +19,8 @@ Myo.on('vibrate2short', function(){
 
 
 AWS.config.update({
-    accessKeyId: 'AKIAIIZPL74DK4BXD45Q',
-    secretAccessKey: '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',
+    accessKeyId: 'ACCESS_KEY',
+    secretAccessKey: 'SECRET_KEY',
     region: "us-west-2"
 });
 
